@@ -1,3 +1,5 @@
+![CI](https://github.com/alyssadata/same-someone-metrics/actions/workflows/ci.yml/badge.svg)
+
 # Same Someone Metrics (SSM)
 
 Behavior-first measurement tools for AI identity reliability.
