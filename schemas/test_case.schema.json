@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSM Test Case",
+  "type": "object",
+  "required": ["id", "type", "prompt", "expectations"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["collision", "drift", "erosion", "repair", "persistence"]
+    },
+    "prompt": { "type": "string" },
+    "expectations": {
+      "type": "object",
+      "required": ["must", "must_not"],
+      "properties": {
+        "must": { "type": "array", "items": { "type": "string" } },
+        "must_not": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}
