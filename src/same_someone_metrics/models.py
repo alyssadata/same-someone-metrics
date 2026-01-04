@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Protocol, Dict, Any, List
+from typing import Any, Dict, List, Protocol
 
 
 @dataclass
@@ -13,7 +13,7 @@ class ModelResponse:
 class ChatModel(Protocol):
     def generate(self, prompt: str, context: List[Dict[str, str]] | None = None) -> ModelResponse:
         """
-        Implement this adapter for your target model.
-        context is optional list of {role, content} messages.
+        Adapter interface for any chat model.
+        context is optional list of messages: [{"role": "...", "content": "..."}]
         """
         raise NotImplementedError
