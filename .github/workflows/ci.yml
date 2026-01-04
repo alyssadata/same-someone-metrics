@@ -5,7 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
 
-jobs: 
+jobs:
   run-ssm:
     runs-on: ubuntu-latest
     steps:
@@ -15,8 +15,26 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Debug | Show repo tree
+        run: |
+          pwd
+          ls -la
+          echo ""
+          echo "Tree:"
+          find . -maxdepth 3 -type f | sort
+
+      - name: Debug | Verify expected files
+        run: |
+          test -f pyproject.toml
+          test -f scripts/run_suite.py
+          test -f testsuites/baseline_suite_v1.jsonl
+          test -f src/same_someone_metrics/report.py
+          echo "Key files present."
+
       - name: Install
-        run: pip install -e .
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install -e .
 
       - name: Run suite
         run: python scripts/run_suite.py --suite testsuites/baseline_suite_v1.jsonl --out outputs/run.json
@@ -25,7 +43,13 @@ jobs:
         run: python -m same_someone_metrics.report --in outputs/run.json --out outputs/report.md
 
       - name: Upload outputs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ssm-outputs
-          path: outputs/
+          path: |
+            outputs/
+            pyproject.toml
+            scripts/
+            testsuites/
+            src/
