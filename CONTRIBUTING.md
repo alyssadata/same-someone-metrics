@@ -102,7 +102,7 @@ pip install -e .
 python scripts/run_suite.py --suite testsuites/baseline_suite_v1.jsonl --out outputs/run.json
 
 ```
-Contributor license note
+## Contributor license note
 
 By submitting a pull request, you confirm you have the right to contribute the content and that it does not include private or proprietary material.
 
