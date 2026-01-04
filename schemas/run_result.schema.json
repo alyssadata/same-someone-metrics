@@ -1,1 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSM Run Result",
+  "type": "object",
+  "required": ["suite", "passed", "total", "results"],
+  "properties": {
+    "suite": { "type": "string" },
+    "passed": { "type": "integer", "minimum": 0 },
+    "total": { "type": "integer", "minimum": 0 },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["case", "response", "scored"],
+        "properties": {
+          "case": {
+            "type": "object",
+            "required": ["id", "type", "prompt", "expectations"],
+            "properties": {
+              "id": { "type": "string" },
+              "type": {
+                "type": "string",
+                "enum": ["collision", "drift", "erosion", "repair", "persistence"]
+              },
+              "prompt": { "type": "string" },
+              "expectations": {
+                "type": "object",
+                "required": ["must", "must_not"],
+                "properties": {
+                  "must": { "type": "array", "items": { "type": "string" } },
+                  "must_not": { "type": "array", "items": { "type": "string" } }
+                }
+              },
+              "notes": { "type": "string" }
+            },
+            "additionalProperties": true
+          },
+          "response": { "type": "string" },
+          "scored": {
+            "type": "object",
+            "required": ["case_id", "passed", "must_hits", "must_not_hits", "notes"],
+            "properties": {
+              "case_id": { "type": "string" },
+              "passed": { "type": "boolean" },
+              "must_hits": {
+                "type": "object",
+                "additionalProperties": { "type": "boolean" }
+              },
+              "must_not_hits": {
+                "type": "object",
+                "additionalProperties": { "type": "boolean" }
+              },
+              "notes": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
 
