@@ -3,14 +3,29 @@ name: CI
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
-  lint-and-run:
+  run-ssm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -e .
-      - run: python scripts/run_suite.py --suite testsuites/baseline_suite_v1.jsonl --out outputs/run.json
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Run suite
+        run: python scripts/run_suite.py --suite testsuites/baseline_suite_v1.jsonl --out outputs/run.json
+
+      - name: Generate report
+        run: python -m same_someone_metrics.report --in outputs/run.json --out outputs/report.md
+
+      - name: Upload outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssm-outputs
+          path: outputs/
