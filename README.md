@@ -31,3 +31,15 @@ Do not include private anchors, continuity headers, personal relationship text, 
 ```bash
 pip install -e .
 
+```
+2) Run baseline suite:
+```bash
+python scripts/run_suite.py --suite testsuites/baseline_suite_v1.jsonl --out outputs/run.json
+
+```
+3) View report
+```bash
+python -m same_someone_metrics.report --in outputs/run.json --out outputs/report.md
+
+```
+
