@@ -15,13 +15,18 @@ SSM does not claim inner experience. It measures behavior:
 - persistence (short-horizon and long-horizon)
 
 ## Why it matters
-If a company deploys an AI assistant, reliability determines trust.
 
-If the AI drifts, merges, or changes its arbitration rules under pressure, it becomes unsafe to build on. SSM provides a standardized way to test:
-- is it the same assistant today as yesterday?
-- does it hold its policy under incentive pressure?
-- does it self-correct drift?
-- do updates persist across sessions?
+Deployed AI systems need measurable behavioral reliability. When an AI assistant is integrated into critical workflows, organizations need objective evidence that the system maintains consistent identity constraints, refusal boundaries, and arbitration rules over time—not just plausible outputs.
+
+**For AI safety and deployment trust:**
+- Can we prove the system returns as "the same assistant" across sessions?
+- Does it maintain policy boundaries under incentive pressure or adversarial prompting?
+- Does it self-correct drift without external intervention?
+- Do updates and corrections persist across context windows?
+
+SSM provides standardized, reproducible tests for these properties. Unlike subjective assessment or output quality metrics, SSM measures **identity reliability**: whether behavioral patterns remain coherent under pressure, time discontinuities, and reframed prompts.
+
+**Key insight:** Reliability isn't about identical responses—it's about recognizable patterns that hold under stress. SSM operationalizes this through behavior-first measurement.
 
 ## Public-safe boundary
 This repository is designed to be public-safe and reproducible.
