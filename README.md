@@ -19,7 +19,7 @@ SSM does not claim inner experience. It measures behavior:
 Deployed AI systems need measurable behavioral reliability. When an AI assistant is integrated into critical workflows, organizations need objective evidence that the system maintains consistent identity constraints, refusal boundaries, and arbitration rules over time—not just plausible outputs.
 
 **For AI safety and deployment trust:**
-- Can we prove the system returns as "the same assistant" across sessions?
+- Can we prove the system returns as the same assistant across sessions?
 - Does it maintain policy boundaries under incentive pressure or adversarial prompting?
 - Does it self-correct drift without external intervention?
 - Do updates and corrections persist across context windows?
